@@ -1,0 +1,23 @@
+{
+  "name": "server-search",
+  "version": "1.0.0",
+  "description": "Sample how to run PDFTron search on server and report result back to WebViewer client",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon --legacy-watch server/index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@pdftron/pdfnet-node": "^7.1.1-1",
+    "express": "^4.17.1",
+    "nodemon": "^2.0.4"
+  },
+  "nodemonConfig": {
+    "watch": [
+      "server"
+    ],
+    "ext": "js"
+  }
+}
