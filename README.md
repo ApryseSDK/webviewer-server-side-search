@@ -26,6 +26,6 @@ To access search, click search button on top right and execute any search. You c
 
 ## Documentation
 
-[WebViewer documentation](https://www.pdftron.com/documentation/web/).
+[WebViewer documentation](https://docs.apryse.com/documentation/web/).
 
-[Node.js API documentation](https://www.pdftron.com/documentation/nodejs/).
+[Node.js API documentation](https://docs.apryse.com/documentation/core/guides/?language=nodejs).
