@@ -1,10 +1,16 @@
-# Integrating server side search to WebViewer Sample
+# WebViewer - Integrating server side search
+
+[WebViewer](https://docs.apryse.com/documentation/web/) is a powerful JavaScript-based PDF Library that is part of the [Apryse SDK](https://apryse.com/). It allows you to view and annotate PDF files on your web app with a fully customizable UI.
+
+![WebViewer UI](https://pdftron.s3.amazonaws.com/downloads/pl/webviewer-ui.png)
 
 This sample shows how to build Node.js based server side search and how you can override default search functionality in WebViewer client.
 
 ## Initial setup
   
-Before you begin, make sure your development environment includes [Node.js](https://nodejs.org/en/). Example was built using Node.js version v12.18, but should work with newer versions as well.
+Before you begin, make sure your development environment includes [Node.js](https://nodejs.org/en/).
+
+This example was built using Node.js version v12.18, but should work with newer versions as well.
 
 ## Install
 
@@ -22,10 +28,17 @@ npm start
 
 This will start web-server that you can access WebViewer client http://localhost:8080/. On the same server we run our search REST API and it is available http://localhost:8080/api/search using GET http method.
 
-To access search, click search button on top right and execute any search. You can see from developer console that search is sent to backend.
+## How to use
+
+- Click search button on top right and execute any search.
+- In the developer console notice the search is sent to backend.
 
 ## Documentation
 
-[WebViewer documentation](https://docs.apryse.com/documentation/web/).
+[WebViewer](https://docs.apryse.com/documentation/web/).
 
-[Node.js API documentation](https://docs.apryse.com/documentation/core/guides/?language=nodejs).
+[Node.js API](https://docs.apryse.com/documentation/core/guides/?language=nodejs).
+
+## License
+
+For licensing, refer to [License](LICENSE).
