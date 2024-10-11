@@ -1,6 +1,6 @@
 const express = require('express');
 const { PDFNet } = require('@pdftron/pdfnet-node');
-
+const licenseKey = 'YOUR_LICENSE_KEY';
 const router = express.Router();
 const MAX_RESULTS = 1000;
 
@@ -27,7 +27,7 @@ function buildSearchMode(options = {}) {
 function searchFromDocument(searchString, searchOptions, onSearchResultFound, onSearchDone){
   return async function searchFromDocument(){
     if(!searchString){
-      // if no search string given, do not proceed any futher
+      // if no search string given, do not proceed any further
       return onSearchDone();
     }
     // Open document
@@ -90,7 +90,7 @@ router.get('/search', function (req, res) {
 
   function onSearchDone(){}
 
-  PDFNet.runWithCleanup(searchFromDocument(keyword, searchOptions, onSearchResultFound, onSearchDone), 0).then(
+  PDFNet.runWithCleanup(searchFromDocument(keyword, searchOptions, onSearchResultFound, onSearchDone), licenseKey).then(
     function onFulfilled() {
       // once search is done, shutdown the document and close response
       PDFNet.shutdown();

@@ -26,7 +26,7 @@ function requestSearch(keyword, options){
 function convertQuadCoordinatesToPdfCoordinates(document, pageNumber, quad){
   // PDFNet search result coordinate space is different than WebViewer coordinate space
   // so we need to convert them to be able to show highlights correctly
-  // https://www.pdftron.com/documentation/web/guides/coordinates/
+  // https://docs.apryse.com/documentation/web/guides/coordinates/
   const point1 = document.getPDFCoordinates(pageNumber, quad.p1x, quad.p1y);
   const point2 = document.getPDFCoordinates(pageNumber, quad.p2x, quad.p2y);
   const point3 = document.getPDFCoordinates(pageNumber, quad.p3x, quad.p3y);
@@ -47,7 +47,7 @@ function convertSearchResultForWebViewer(document, result){
   const webViewerFormattedQuads = result.quads.map((quad) => {
     // PDFNet search result coordinate space is different than WebViewer coordinate space
     // so we need to convert them to be able to show highlights correctly
-    // https://www.pdftron.com/documentation/web/guides/coordinates/
+    // https://docs.apryse.com/documentation/web/guides/coordinates/
     return convertQuadCoordinatesToPdfCoordinates(document, result.page_num, quad);
   });
   // WebViewer uses slightly modified result format than PDFNet on the server side.
