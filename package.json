@@ -1,7 +1,7 @@
 {
   "name": "server-search",
   "version": "1.0.0",
-  "description": "Sample how to run PDFTron search on server and report result back to WebViewer client",
+  "description": "Sample how to run Apryse search on server and report result back to WebViewer client",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
