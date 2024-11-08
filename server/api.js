@@ -1,6 +1,6 @@
 const express = require('express');
 const { PDFNet } = require('@pdftron/pdfnet-node');
-
+const licenseKey = 'YOUR_LICENSE_KEY';
 const router = express.Router();
 const MAX_RESULTS = 1000;
 
@@ -24,10 +24,10 @@ function buildSearchMode(options = {}) {
   return searchMode;
 }
 
-function searchFromDocument(searchString, searchOptions, onSearchResultFound, onSearchDone){
-  return async function searchFromDocument(){
-    if(!searchString){
-      // if no search string given, do not proceed any futher
+function searchFromDocument(searchString, searchOptions, onSearchResultFound, onSearchDone) {
+  return async function searchFromDocument() {
+    if (!searchString) {
+      // if no search string given, do not proceed any further
       return onSearchDone();
     }
     // Open document
@@ -38,12 +38,12 @@ function searchFromDocument(searchString, searchOptions, onSearchResultFound, on
     await textSearch.begin(document, searchString, textSearchMode);
     let iteration = 1;
     let done = false;
-    while(!done && iteration < MAX_RESULTS){
+    while (!done && iteration < MAX_RESULTS) {
       // run() return results one by one. We'll run search as long as document has not reach to the end
       // or if the max result size is not limited
       // TODO: make sure this is not awaiting the response
       const result = await textSearch.run();
-      if(result.code === PDFNet.TextSearch.ResultCode.e_found){
+      if (result.code === PDFNet.TextSearch.ResultCode.e_found) {
         // highlight information is returned in result. We return all quads to the client
         // so we can show where in the document search keyword was found.
         const highlight = result.highlights;
@@ -57,7 +57,7 @@ function searchFromDocument(searchString, searchOptions, onSearchResultFound, on
         result.quads = quadsInResults;
         onSearchResultFound(result);
       }
-      if(result.code === PDFNet.TextSearch.ResultCode.e_done){
+      if (result.code === PDFNet.TextSearch.ResultCode.e_done) {
         onSearchDone();
         done = true;
       }
@@ -66,11 +66,11 @@ function searchFromDocument(searchString, searchOptions, onSearchResultFound, on
   }
 }
 
-function stringToBoolean(value){
+function stringToBoolean(value) {
   return value === 'true';
 }
 
-router.get('/search', function (req, res) {
+router.get('/search', function(req, res) {
   // use search keyword from request query parameter
   let keyword = req.query.keyword;
   const searchOptions = {
@@ -78,25 +78,23 @@ router.get('/search', function (req, res) {
     wholeWord: stringToBoolean(req.query.wholeWord),
     regex: stringToBoolean(req.query.regex),
   }
-  if(!keyword){
+  if (!keyword) {
     return res.status(400).send('Bad request. Keyword query parameter missing');
   }
 
   res.setHeader('Content-Type', 'application/json');
   const results = [];
-  function onSearchResultFound(result){
+  function onSearchResultFound(result) {
     results.push(result);
   }
 
-  function onSearchDone(){}
+  function onSearchDone() { }
 
-  PDFNet.runWithCleanup(searchFromDocument(keyword, searchOptions, onSearchResultFound, onSearchDone), 0).then(
+  PDFNet.runWithCleanup(searchFromDocument(keyword, searchOptions, onSearchResultFound, onSearchDone), licenseKey).then(
     function onFulfilled() {
-      // once search is done, shutdown the document and close response
-      PDFNet.shutdown();
       res.status(200).json(results);
     },
-    function onRejected(error){
+    function onRejected(error) {
       // log error and close response
       console.error('Error while searching', error);
       res.status(503).send();

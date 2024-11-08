@@ -2,6 +2,9 @@
 # Created by https://www.toptal.com/developers/gitignore/api/windows,macos,visualstudio,node
 # Edit at https://www.toptal.com/developers/gitignore?templates=windows,macos,visualstudio,node
 
+# WebViewer
+client/webviewer
+
 ### macOS ###
 # General
 .DS_Store

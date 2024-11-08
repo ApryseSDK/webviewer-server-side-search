@@ -1,18 +1,30 @@
-# Integrating server side search to WebViewer Sample
+# WebViewer - Server-Side Search Integration
 
-This sample shows how to build Node.js based server side search and how you can override default search functionality in WebViewer client.
+[WebViewer](https://docs.apryse.com/documentation/web/) is a powerful JavaScript-based PDF Library that is part of the [Apryse SDK](https://apryse.com/). It allows you to view and annotate PDF files on your web app with a fully customizable UI.
+
+![WebViewer UI](https://pdftron.s3.amazonaws.com/downloads/pl/webviewer-ui.png "WebViewer UI")
+
+This sample adds a WebViewer to a Node.js project that enables a search feature as server-side and overrides the default client search.
 
 ## Initial setup
   
-Before you begin, make sure your development environment includes [Node.js](https://nodejs.org/en/). Example was built using Node.js version v12.18, but should work with newer versions as well.
+Before you begin, make sure your development environment includes [Node.js](https://nodejs.org/en/).
 
 ## Install
 
 ```
-git clone https://github.com/PDFTron/webviewer-server-side-search.git
+git clone https://github.com/ApryseSDK/webviewer-server-side-search
 cd webviewer-server-side-search
 npm install
 ```
+
+## Setting License
+
+Follow the steps below to set the license key in this sample:
+
+- Locate the file /server/api.js
+- Replace 'YOUR_LICENSE_KEY' with your license
+- Save the file
 
 ## Run
 
@@ -20,12 +32,19 @@ npm install
 npm start
 ```
 
-This will start web-server that you can access WebViewer client http://localhost:8080/. On the same server we run our search REST API and it is available http://localhost:8080/api/search using GET http method.
+This will start a server that you can access the WebViewer client at http://localhost:8080/. The search REST API is available at http://localhost:8080/api/search using `GET`.
 
-To access search, click search button on top right and execute any search. You can see from developer console that search is sent to backend.
+## How to search
 
-## Documentation
+- Click the search button at the top-right corner and execute a search.
+- The search performs in the backend and returns a list of hits for the current document. You can navigate the document from the list.
 
-[WebViewer documentation](https://www.pdftron.com/documentation/web/).
+## WebViewer APIs
 
-[Node.js API documentation](https://www.pdftron.com/documentation/nodejs/).
+[WebViewer: Feature-Rich JavaScript PDF Viewer](https://docs.apryse.com/documentation/web/).
+
+[Guides for Server/Desktop PDF library](https://docs.apryse.com/documentation/core/guides/).
+
+## License
+
+For licensing, refer to [License](LICENSE).
